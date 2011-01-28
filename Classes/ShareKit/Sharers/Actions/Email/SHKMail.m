@@ -131,6 +131,7 @@
 	mailController.mailComposeDelegate = self;
 	
 	NSString *body = [item customValueForKey:@"body"];
+	NSString *subject = [item customValueForKey:@"subject"];
 	
 	if (body == nil)
 	{
@@ -179,7 +180,7 @@
 		[item setCustomValue:body forKey:@"body"];
 	}
 	
-	[mailController setSubject:item.title];
+	[mailController setSubject:(subject != nil ? subject : item.title)];
 	[mailController setMessageBody:body isHTML:YES];
 			
 	[[SHK currentHelper] showViewController:mailController];
