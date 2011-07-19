@@ -22,6 +22,9 @@
 
 @implementation THTTPClient
 
+- (NSString *) description {
+    return [NSString stringWithFormat:@"<THTTPClient URL='%@', UserAgent='%@'>",mURL, mRequestData, mUserAgent];
+}
 
 - (void) setupRequest
 {
