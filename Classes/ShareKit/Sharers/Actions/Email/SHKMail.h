@@ -29,6 +29,10 @@
 #import "SHKSharer.h"
 #import <MessageUI/MessageUI.h>
 
+@interface MFMailComposeViewController (SHK)
+- (void)SHKviewDidDisappear:(BOOL)animated;
+@end
+
 @interface SHKMail : SHKSharer <MFMailComposeViewControllerDelegate>
 {
 

@@ -37,7 +37,7 @@
 @implementation SHKItem
 
 @synthesize shareType;
-@synthesize URL, shorten, image, title, text, tags, thumbnailURL, data, mimeType, filename;
+@synthesize URL, image, title, text, tags, data, mimeType, filename;
 @synthesize custom;
 
 - (void)dealloc

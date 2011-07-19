@@ -26,6 +26,7 @@
 //
 
 #import "SHKSharer.h"
+#import "SHKActivityIndicator.h"
 
 @implementation SHKSharer
 
@@ -126,6 +127,8 @@
 		case SHKShareTypeFile:
 			return [self canShareFile];
 			break;
+		default: 
+			return NO;
 	}
 	return NO;
 }
@@ -258,16 +261,6 @@
 
 - (void)share
 {
-	if(![SHK connected] && [[self class] shareRequiresInternetConnection]) {
-	   [[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"NoConnection")
-									message:SHKLocalizedString(@"ShareInternetRequired", [self sharerTitle])
-								   delegate:nil
-						  cancelButtonTitle:SHKLocalizedString(@"Close")
-						  otherButtonTitles:nil] autorelease] show];
-		return;
-		   
-	}
-
 	// isAuthorized - If service requires login and details have not been saved, present login dialog	
 	if (![self authorize])
 		self.pendingAction = SHKPendingShare;
@@ -623,18 +616,20 @@
 - (void)sharerStartedSending:(SHKSharer *)sharer
 {
 	if (!quiet)
-		[SHK displayActivity:SHKLocalizedString(@"Saving to %@", [[self class] sharerTitle])];
+		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Saving to %@", [[self class] sharerTitle])];
 }
 
 - (void)sharerFinishedSending:(SHKSharer *)sharer
 {
+	if (!quiet)
+		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
 }
 
 - (void)sharer:(SHKSharer *)sharer failedWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
 {
 	if (!quiet)
 	{
-		[SHK hideActivityIndicator];
+		[[SHKActivityIndicator currentIndicator] hide];
 		
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Error")
 									 message:sharer.lastError!=nil?[sharer.lastError localizedDescription]:SHKLocalizedString(@"There was an error while sharing")
@@ -661,6 +656,8 @@
 	{
 		case SHKPendingShare:
 			[self share];
+			break;
+		default:
 			break;
 	}
 }
@@ -696,9 +693,6 @@
 
 - (void)sendDidFinish
 {	
-	if (!quiet) {
-		[SHK displayCompleted:SHKLocalizedString(@"Sent to %@", [[self class] sharerTitle])];
-    }
 	if ([shareDelegate respondsToSelector:@selector(sharerFinishedSending:)])
 		[shareDelegate performSelector:@selector(sharerFinishedSending:) withObject:self];
 	
@@ -735,4 +729,3 @@
 
 
 @end
-

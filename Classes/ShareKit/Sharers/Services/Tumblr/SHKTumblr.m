@@ -59,13 +59,13 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 #pragma mark Authorization
 
 - (NSString *)authorizationFormCaption{
-	return SHKLocalizedString(@"Set up a free account at %@", @"Tumblr.com");
+	return SHKLocalizedString(@"Create a free account at %@", @"Tumblr.com");
 }
 
 - (void)authorizationFormValidate:(SHKFormController *)form{
 	// Display an activity indicator
 	if (!quiet)
-		[SHK displayActivity:SHKLocalizedString(@"Logging In...")];
+		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
 	
 	
 	// Authorize the user through the server
@@ -87,7 +87,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 }
 
 - (void)authFinished:(SHKRequest *)aRequest{		
-	[SHK hideActivityIndicator];
+	[[SHKActivityIndicator currentIndicator] hide];
 	if (aRequest.success)
 		[pendingForm saveForm];
 	
@@ -318,7 +318,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
             return;
         }
         
-		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a sending your post to Tumblr.")]];
+		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was an error sending your post to Tumblr.")]];
 		return;
 	}
     

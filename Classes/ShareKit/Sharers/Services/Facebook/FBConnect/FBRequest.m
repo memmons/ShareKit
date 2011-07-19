@@ -177,11 +177,6 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
 - (id)parseXMLResponse:(NSData*)data error:(NSError**)error {
   FBXMLHandler* handler = [[[FBXMLHandler alloc] init] autorelease];
   NSXMLParser* parser = [[[NSXMLParser alloc] initWithData:data] autorelease];
-  
-  // The line below throws a semantic warning (and rightly so). Although the 
-  // NSXMLParser is available as of 2.x, the NSXMLParserDelegate is only available
-  // in 4.x. So, the FBXMLHandler cannot adopt the NSXMLParserDelegate protocol.
-  // Leaving the code as-is for now, but this should really be revisited.
   parser.delegate = handler;
   [parser parse];
 

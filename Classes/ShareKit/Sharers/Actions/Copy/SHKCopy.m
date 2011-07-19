@@ -35,7 +35,7 @@
 
 + (NSString *)sharerTitle
 {
-	return SHKLocalizedString(@"Copy Link");
+	return SHKLocalizedString(@"Copy");
 }
 
 + (BOOL)canShareURL
@@ -80,7 +80,7 @@
 		[[UIPasteboard generalPasteboard] setImage:item.image];
 	
 	// Notify user
-	[SHK displayCompleted:SHKLocalizedString(@"Copied")];
+	[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
 	
 	// Notify delegate, but quietly
 	self.quiet = YES;

@@ -32,8 +32,10 @@
 #import "SHKItem.h"
 #import "SHKActionSheet.h"
 #import "SHKRequest.h"
+#import "SHKActivityIndicator.h"
 #import "SHKFormFieldSettings.h"
 #import "UIWebView+SHK.h"
+
 
 @class SHKActionSheet;
 @class SHKViewControllerWrapper;
@@ -108,13 +110,6 @@
 + (void)saveOfflineQueueList:(NSMutableArray *)queueList;
 + (BOOL)addToOfflineQueue:(SHKItem *)item forSharer:(NSString *)sharerId;
 + (void)flushOfflineQueue;
-
-#pragma mark -
-#pragma mark HUD Activity Messaging
-
-+ (void)displayCompleted:(NSString *)labelText;
-+ (void)displayActivity:(NSString *)labelText;
-+ (void)hideActivityIndicator;
 
 #pragma mark -
 
