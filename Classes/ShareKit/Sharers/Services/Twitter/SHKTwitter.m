@@ -83,6 +83,11 @@
 	return YES;
 }
 
++ (BOOL)shareRequiresInternetConnection
+{
+	return NO;
+}
+
 
 #pragma mark -
 #pragma mark Configuration : Dynamic Enable
@@ -139,9 +144,8 @@
 - (void)tokenAccessModifyRequest:(OAMutableURLRequest *)oRequest
 {	
 	if (xAuth)
-	{
-		NSDictionary *formValues = [pendingForm formValues];
-		
+	{		
+    	NSDictionary *formValues = [pendingForm formValues];
 		OARequestParameter *username = [[[OARequestParameter alloc] initWithName:@"x_auth_username"
 																			 value:[formValues objectForKey:@"username"]] autorelease];
 		
@@ -161,6 +165,8 @@
 	{
 		if (ticket.didSucceed)
 		{
+        	NSDictionary *formValues = [pendingForm formValues];
+        	[[NSUserDefaults standardUserDefaults] setObject:[formValues objectForKey:@"username"] forKey:@"SHKTwitterUsername"];
 			[item setCustomValue:[[pendingForm formValues] objectForKey:@"followMe"] forKey:@"followMe"];
 			[pendingForm close];
 		}
@@ -212,6 +218,7 @@
 - (void)showTwitterForm
 {
 	SHKTwitterForm *rootView = [[SHKTwitterForm alloc] initWithNibName:nil bundle:nil];	
+	rootView.username = [[NSUserDefaults standardUserDefaults] objectForKey:@"SHKTwitterUsername"];
 	rootView.delegate = self;
 	
 	// force view to load so we can set textView text
@@ -551,6 +558,13 @@
 	
 	[fetcher start];
 	[oRequest release];
+}
+
+- (void)sendDidFinish
+{	
+	if (!quiet) {
+        [SHK displayCompleted:SHKLocalizedString(@"Posted to Twitter")];
+    }
 }
 
 @end
