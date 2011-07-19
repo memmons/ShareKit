@@ -171,12 +171,7 @@
  * Deletes all cookies belonging to facebook
  */
 - (void)deleteFacebookCookies;
-
-<<<<<<< HEAD
-=======
 - (void)requestTimerReady;
-
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

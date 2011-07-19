@@ -26,10 +26,7 @@
 //
 
 #import "SHKSharer.h"
-<<<<<<< HEAD
-=======
 #import "SHKActivityIndicator.h"
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 @implementation SHKSharer
 
@@ -130,12 +127,8 @@
 		case SHKShareTypeFile:
 			return [self canShareFile];
 			break;
-<<<<<<< HEAD
-=======
-			
 		default: 
 			return NO;
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	}
 	return NO;
 }
@@ -268,19 +261,6 @@
 
 - (void)share
 {
-<<<<<<< HEAD
-	if(![SHK connected] && [[self class] shareRequiresInternetConnection]) {
-	   [[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"NoConnection")
-									message:SHKLocalizedString(@"ShareInternetRequired", [self sharerTitle])
-								   delegate:nil
-						  cancelButtonTitle:SHKLocalizedString(@"Close")
-						  otherButtonTitles:nil] autorelease] show];
-		return;
-		   
-	}
-
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	// isAuthorized - If service requires login and details have not been saved, present login dialog	
 	if (![self authorize])
 		self.pendingAction = SHKPendingShare;
@@ -636,31 +616,20 @@
 - (void)sharerStartedSending:(SHKSharer *)sharer
 {
 	if (!quiet)
-<<<<<<< HEAD
-		[SHK displayActivity:SHKLocalizedString(@"Saving to %@", [[self class] sharerTitle])];
-=======
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Saving to %@", [[self class] sharerTitle])];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (void)sharerFinishedSending:(SHKSharer *)sharer
 {
-<<<<<<< HEAD
-=======
 	if (!quiet)
 		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (void)sharer:(SHKSharer *)sharer failedWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
 {
 	if (!quiet)
 	{
-<<<<<<< HEAD
-		[SHK hideActivityIndicator];
-=======
 		[[SHKActivityIndicator currentIndicator] hide];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Error")
 									 message:sharer.lastError!=nil?[sharer.lastError localizedDescription]:SHKLocalizedString(@"There was an error while sharing")
@@ -688,12 +657,8 @@
 		case SHKPendingShare:
 			[self share];
 			break;
-<<<<<<< HEAD
-=======
 		default:
 			break;
-
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	}
 }
 
@@ -728,12 +693,6 @@
 
 - (void)sendDidFinish
 {	
-<<<<<<< HEAD
-	if (!quiet) {
-		[SHK displayCompleted:SHKLocalizedString(@"Sent to %@", [[self class] sharerTitle])];
-    }
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	if ([shareDelegate respondsToSelector:@selector(sharerFinishedSending:)])
 		[shareDelegate performSelector:@selector(sharerFinishedSending:) withObject:self];
 	
@@ -770,7 +729,3 @@
 
 
 @end
-<<<<<<< HEAD
-
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a

@@ -31,11 +31,6 @@
 #import "SHKCustomShareMenu.h"
 #import <Foundation/NSObjCRuntime.h>
 
-<<<<<<< HEAD
-static BOOL hasMoreButton = NO;
-
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @implementation SHKActionSheet
 
 @synthesize item, sharers;
@@ -49,44 +44,21 @@ static BOOL hasMoreButton = NO;
 
 + (SHKActionSheet *)actionSheetForType:(SHKShareType)type
 {
-<<<<<<< HEAD
-    return [self actionSheetForType:type withSharers:nil];
-}
-
-+ (SHKActionSheet *)actionSheetForType:(SHKShareType)type withSharers:(NSArray *)sharers
-{
-	SHKActionSheet *as = [[SHKActionSheet alloc] initWithTitle:nil
-													  delegate:self
-											 cancelButtonTitle:nil
-										destructiveButtonTitle:nil
-											 otherButtonTitles:nil];
-=======
 	SHKActionSheet *as = [[SHKActionSheet alloc] initWithTitle:SHKLocalizedString(@"Share")
 													  delegate:nil
 											 cancelButtonTitle:nil
 										destructiveButtonTitle:nil
 											 otherButtonTitles:nil];
 	as.delegate = as;
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	as.item = [[[SHKItem alloc] init] autorelease];
 	as.item.shareType = type;
 	
 	as.sharers = [NSMutableArray arrayWithCapacity:0];
-<<<<<<< HEAD
-	if (!sharers) {
-	    sharers = [SHK favoriteSharersForType:type];
-	}
-		
-	// Add buttons for each favorite sharer
-	id class;
-	for(NSString *sharerId in sharers)
-=======
 	NSArray *favoriteSharers = [SHK favoriteSharersForType:type];
 		
 	// Add buttons for each favorite sharer
 	id class;
 	for(NSString *sharerId in favoriteSharers)
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	{
 		class = NSClassFromString(sharerId);
 		if ([class canShare])
@@ -96,24 +68,8 @@ static BOOL hasMoreButton = NO;
 		}
 	}
 	
-<<<<<<< HEAD
-    int total_sharers = 0;
-    for (NSString *key in [SHK sharersDictionary]) {
-        total_sharers += [[[SHK sharersDictionary] objectForKey:key] count];
-    }
-
-    if (total_sharers > [sharers count] && !sharers) {
-        hasMoreButton = YES;
-	    // Add More button
-	    [as addButtonWithTitle:SHKLocalizedString(@"More...")];
-    }
-    else {
-        hasMoreButton = NO;
-    }
-=======
 	// Add More button
 	[as addButtonWithTitle:SHKLocalizedString(@"More...")];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	// Add Cancel button
 	[as addButtonWithTitle:SHKLocalizedString(@"Cancel")];
@@ -129,17 +85,6 @@ static BOOL hasMoreButton = NO;
 	return as;
 }
 
-<<<<<<< HEAD
-+ (SHKActionSheet *)actionSheetForItem:(SHKItem *)i withSharers:(NSArray *)sharers 
-{
-	SHKActionSheet *as = [self actionSheetForType:i.shareType withSharers:sharers];
-	as.item = i;
-	return as;
-}
-
-
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 - (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
 {
 	// Sharers
@@ -149,11 +94,7 @@ static BOOL hasMoreButton = NO;
 	}
 	
 	// More
-<<<<<<< HEAD
-	else if (buttonIndex == sharers.count && hasMoreButton)
-=======
 	else if (buttonIndex == sharers.count)
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	{
 		SHKShareMenu *shareMenu = [[SHKCustomShareMenu alloc] initWithStyle:UITableViewStyleGrouped];
 		shareMenu.item = item;

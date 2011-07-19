@@ -91,11 +91,6 @@
 		if (accessToken.sessionHandle != nil)
 			[oRequest setOAuthParameterName:@"oauth_session_handle" withValue:accessToken.sessionHandle];	
 	}
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	else
 		[oRequest setOAuthParameterName:@"oauth_verifier" withValue:[authorizeResponseQueryVars objectForKey:@"oauth_verifier"]];
 }
@@ -146,11 +141,6 @@
 															   signatureProvider:nil];
 		
 		[oRequest setHTTPMethod:@"GET"];
-<<<<<<< HEAD
-				
-=======
-		
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		
 		OARequestParameter *urlParam = [OARequestParameter requestParameterWithName:@"url"
 																			  value:[item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -171,15 +161,9 @@
 		[oRequest setParameters:[NSArray arrayWithObjects:descParam, extendedParam, sharedParam, tagsParam, urlParam, nil]];
 		
 		OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
-<<<<<<< HEAD
-							 delegate:self
-					didFinishSelector:@selector(sendTicket:didFinishWithData:)
-					  didFailSelector:@selector(sendTicket:didFailWithError:)];	
-=======
 																							  delegate:self
 																					 didFinishSelector:@selector(sendTicket:didFinishWithData:)
 																					   didFailSelector:@selector(sendTicket:didFailWithError:)];	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		
 		[fetcher start];
 		[oRequest release];
@@ -205,20 +189,10 @@
 	{	
 		if (SHKDebugShowLogs) // check so we don't have to alloc the string with the data if we aren't logging
 			SHKLog(@"SHKDelicious sendTicket Response Body: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		// Look for oauth problems		
 		// TODO - I'd prefer to use regex for this but that would require OS4 or adding a regex library
 		NSError *error;
 		NSString *body = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-<<<<<<< HEAD
-				
-=======
-		
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		// Expired token
 		if ([body rangeOfString:@"token_expired"].location != NSNotFound)
 		{
@@ -241,9 +215,4 @@
 	[self sendDidFailWithError:error];
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end

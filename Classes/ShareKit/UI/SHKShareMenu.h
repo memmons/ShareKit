@@ -35,11 +35,7 @@
 	NSMutableDictionary *exclusions;
 }
 
-<<<<<<< HEAD
-@property (retain) SHKItem *item;
-=======
 @property (nonatomic, retain) SHKItem *item;
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @property (retain) NSMutableArray *tableData;
 @property (retain) NSMutableDictionary *exclusions;
 

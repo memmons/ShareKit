@@ -299,15 +299,10 @@ static CGFloat kBorderWidth = 10;
   return [self initWithSession:[FBSession session]];
 }
 
-<<<<<<< HEAD
-- (id)initWithSession:(FBSession*)session {
-  if ((self = [super initWithFrame:CGRectZero])) {
-=======
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 - (id)initWithSession:(FBSession*)session {
   if (self = [super initWithFrame:CGRectZero]) {
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
     _delegate = nil;
     _session = [session retain];
     _loadingURL = nil;
@@ -332,20 +327,11 @@ static CGFloat kBorderWidth = 10;
     [_closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [_closeButton addTarget:self action:@selector(cancel)
       forControlEvents:UIControlEventTouchUpInside];
-<<<<<<< HEAD
-	if ([_closeButton respondsToSelector:@selector(titleLabel)]) {
-		_closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-	} else {// This triggers a deprecation warning but at least it will work on OS 2.x
-            // New note: Since the target is now 3.x, we can refactor depreciated code.
-		_closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-	}
-=======
   	if ([_closeButton respondsToSelector:@selector(titleLabel)]) {
 		_closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
   	} else { // This triggers a deprecation warning but at least it will work on OS 2.x
 		_closeButton.font = [UIFont boldSystemFontOfSize:12];
   	}
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	_closeButton.showsTouchWhenHighlighted = YES;
     _closeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
       | UIViewAutoresizingFlexibleBottomMargin;

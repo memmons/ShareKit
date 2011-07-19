@@ -42,20 +42,11 @@ typedef enum
 	SHKShareType shareType;
 	
 	NSURL *URL;
-<<<<<<< HEAD
-    BOOL shorten;
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
-	
 	UIImage *image;
 	
 	NSString *title;
 	NSString *text;
 	NSString *tags;
-<<<<<<< HEAD
-	NSURL *thumbnailURL;
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	NSData *data;
 	NSString *mimeType;
@@ -68,21 +59,11 @@ typedef enum
 @property (nonatomic)			SHKShareType shareType;
 
 @property (nonatomic, retain)	NSURL *URL;
-<<<<<<< HEAD
-@property (nonatomic, assign)	BOOL shorten;
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
-
 @property (nonatomic, retain)	UIImage *image;
 
 @property (nonatomic, retain)	NSString *title;
 @property (nonatomic, retain)	NSString *text;
 @property (nonatomic, retain)	NSString *tags;
-<<<<<<< HEAD
-@property (nonatomic, retain)	NSURL *thumbnailURL;
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
-
 @property (nonatomic, retain)	NSData *data;
 @property (nonatomic, retain)	NSString *mimeType;
 @property (nonatomic, retain)	NSString *filename;

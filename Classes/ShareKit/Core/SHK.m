@@ -26,32 +26,15 @@
 //
 
 #import "SHK.h"
-<<<<<<< HEAD
-=======
 #import "SHKActivityIndicator.h"
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 #import "SHKViewControllerWrapper.h"
 #import "SHKActionSheet.h"
 #import "SHKOfflineSharer.h"
 #import "SFHFKeychainUtils.h"
 #import "Reachability.h"
-<<<<<<< HEAD
-#import </usr/include/objc/objc-class.h>
-#import <MessageUI/MessageUI.h>
-#import "MBProgressHUD.h"
-
-static MBProgressHUD *HUD = nil;
-static const NSTimeInterval HUDMinShowTime = 1.0;
-
-@interface SHK (private)
-+ (void)createHUD;
-@end
-=======
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import <MessageUI/MessageUI.h>
-
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 @implementation SHK
 
@@ -77,15 +60,11 @@ BOOL SHKinit;
 	
 	if (!SHKinit)
 	{
-<<<<<<< HEAD
-		SHKSwizzle([MFMailComposeViewController class], @selector(viewDidDisappear:), @selector(SHKviewDidDisappear:));	
-=======
 		SHKSwizzle([MFMailComposeViewController class], @selector(viewDidDisappear:), @selector(SHKviewDidDisappear:));			
 		
 		if (NSClassFromString(@"MFMessageComposeViewController") != nil)
 			SHKSwizzle([MFMessageComposeViewController class], @selector(viewDidDisappear:), @selector(SHKviewDidDisappear:));	
 		
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		SHKinit = YES;
 	}
 }
@@ -310,14 +289,6 @@ BOOL SHKinit;
 				break;
 				
 			case SHKShareTypeText:
-<<<<<<< HEAD
-				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKTwitter",@"SHKFacebook", nil];
-				break;
-				
-			case SHKShareTypeFile:
-				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail", nil];
-				break;
-=======
 				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKTwitter",@"SHKFacebook",nil];
 				break;
 				
@@ -327,7 +298,6 @@ BOOL SHKinit;
 			
 			default:
 				favoriteSharers = [NSArray array];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		}
 		
 		// Save defaults to prefs
@@ -514,10 +484,6 @@ static NSDictionary *sharersDictionary = nil;
 						  nil]];
 	
 	[self saveOfflineQueueList:queueList];
-<<<<<<< HEAD
-	[SHK displayCompleted:SHKLocalizedString(@"Offline: Queued")];
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	return YES;
 }
@@ -563,51 +529,6 @@ static NSDictionary *sharersDictionary = nil;
 }
 
 #pragma mark -
-<<<<<<< HEAD
-#pragma mark HUD convenience methods
-
-+ (void)displayCompleted:(NSString *)labelText {
-    [SHK createHUD];
-    HUD.labelText = labelText;
-    UIImageView *image_view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareKit.bundle/SHKCheck.png"]];
-	HUD.customView = image_view;
-	[image_view release];
-    HUD.mode = MBProgressHUDModeCustomView;
-    [HUD show:YES];
-    [HUD hide:YES];
-}
-
-+ (void)displayActivity:(NSString *)labelText {
-    [SHK createHUD];
-    HUD.labelText = labelText;
-    HUD.mode = MBProgressHUDModeIndeterminate;
-    [HUD show:YES];
-}
-
-+ (void)hideActivityIndicator {
-    [HUD hide:YES];
-    [HUD removeFromSuperview];
-}
-
-+ (void)createHUD {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (!HUD) {
-        HUD = [[MBProgressHUD alloc] initWithView:window];
-	    HUD.userInteractionEnabled = NO;
-        HUD.animationType = MBProgressHUDAnimationZoom;
-        HUD.minShowTime = HUDMinShowTime;
-    }
-    if (HUD.superview != window) {
-        if (HUD.superview) {
-            [window removeFromSuperview];
-        }
-        [window addSubview:HUD];
-    }
-}
-
-#pragma mark -
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 + (NSError *)error:(NSString *)description, ...
 {
@@ -679,11 +600,12 @@ void SHKSwizzle(Class c, SEL orig, SEL newClassName)
 NSString* SHKLocalizedString(NSString* key, ...) 
 {
 	// Localize the format
-<<<<<<< HEAD
-	NSString *localizedStringFormat = NSLocalizedStringFromTable(key, @"ShareKit", nil);
-=======
-	NSString *localizedStringFormat = NSLocalizedString(key, key);
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
+	
+    //NSString *localizedStringFormat = NSLocalizedStringFromTable(key, @"ShareKit", nil);
+	//TODO: Change to use the above line. If the default Localized.string file is used instead of a
+    //custom file name, such as ShareKit.strings, then localization will not work when importing sharekit
+    //into an already localized project -- there can be only one Localized.strings file per project.
+    NSString *localizedStringFormat = NSLocalizedString(key, key);
 	
 	va_list args;
     va_start(args, key);

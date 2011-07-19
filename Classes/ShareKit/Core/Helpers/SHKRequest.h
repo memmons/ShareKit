@@ -62,11 +62,7 @@
 @property (retain) NSDictionary *headers;
 
 @property (retain) NSMutableData *data;
-<<<<<<< HEAD
-@property (retain, getter=getResult) NSString *result;
-=======
 @property (nonatomic, retain, getter=getResult) NSString *result;
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @property (nonatomic) BOOL success;
 
 - (id)initWithURL:(NSURL *)u params:(NSString *)p delegate:(id)d isFinishedSelector:(SEL)s method:(NSString *)m autostart:(BOOL)autostart;

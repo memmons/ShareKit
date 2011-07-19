@@ -83,15 +83,6 @@
 	return YES;
 }
 
-<<<<<<< HEAD
-+ (BOOL)shareRequiresInternetConnection
-{
-	return NO;
-}
-
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
-
 #pragma mark -
 #pragma mark Configuration : Dynamic Enable
 
@@ -147,18 +138,6 @@
 - (void)tokenAccessModifyRequest:(OAMutableURLRequest *)oRequest
 {	
 	if (xAuth)
-<<<<<<< HEAD
-	{		
-    	NSDictionary *formValues = [pendingForm formValues];
-		OARequestParameter *username = [[[OARequestParameter alloc] initWithName:@"x_auth_username"
-																			 value:[formValues objectForKey:@"username"]] autorelease];
-		
-		OARequestParameter *password = [[[OARequestParameter alloc] initWithName:@"x_auth_password"
-																			 value:[formValues objectForKey:@"password"]] autorelease];
-		
-		OARequestParameter *mode = [[[OARequestParameter alloc] initWithName:@"x_auth_mode"
-																			 value:@"client_auth"] autorelease];
-=======
 	{
 		NSDictionary *formValues = [pendingForm formValues];
 		
@@ -170,7 +149,6 @@
 		
 		OARequestParameter *mode = [[[OARequestParameter alloc] initWithName:@"x_auth_mode"
 																	   value:@"client_auth"] autorelease];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		
 		[oRequest setParameters:[NSArray arrayWithObjects:username, password, mode, nil]];
 	}
@@ -182,11 +160,6 @@
 	{
 		if (ticket.didSucceed)
 		{
-<<<<<<< HEAD
-        	NSDictionary *formValues = [pendingForm formValues];
-        	[[NSUserDefaults standardUserDefaults] setObject:[formValues objectForKey:@"username"] forKey:@"SHKTwitterUsername"];
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 			[item setCustomValue:[[pendingForm formValues] objectForKey:@"followMe"] forKey:@"followMe"];
 			[pendingForm close];
 		}
@@ -201,11 +174,6 @@
 			return;
 		}
 	}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	[super tokenAccessTicket:ticket didFinishWithData:data];		
 }
 
@@ -217,17 +185,7 @@
 {
 	if (item.shareType == SHKShareTypeURL)
 	{
-<<<<<<< HEAD
-	    if (item.shorten) {
-    	    [self shortenURL];
-	    }
-		else {
-    		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", item.title, [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] forKey:@"status"];
-    		[self showTwitterForm];		
-		}
-=======
 		[self shortenURL];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	}
 	
 	else if (item.shareType == SHKShareTypeImage)
@@ -246,10 +204,6 @@
 - (void)showTwitterForm
 {
 	SHKTwitterForm *rootView = [[SHKTwitterForm alloc] initWithNibName:nil bundle:nil];	
-<<<<<<< HEAD
-	rootView.username = [[NSUserDefaults standardUserDefaults] objectForKey:@"SHKTwitterUsername"];
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	rootView.delegate = self;
 	
 	// force view to load so we can set textView text
@@ -282,19 +236,6 @@
 	}
 	
 	if (!quiet)
-<<<<<<< HEAD
-		[SHK displayActivity:SHKLocalizedString(@"Shortening URL...")];
-	
-	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:[NSMutableString stringWithFormat:@"http://api.bit.ly/v3/shorten?login=%@&apikey=%@&longUrl=%@&format=txt",
-																		 SHKBitLyLogin,
-																		  SHKBitLyKey,																		  
-																		  SHKEncodeURL(item.URL)
-																		 ]]
-											params:nil
-										  delegate:self
-								isFinishedSelector:@selector(shortenURLFinished:)
-											method:@"GET"
-=======
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Shortening URL...")];
 	
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:[NSMutableString stringWithFormat:@"http://api.bit.ly/v3/shorten?login=%@&apikey=%@&longUrl=%@&format=txt",
@@ -306,17 +247,12 @@
 										   delegate:self
 								 isFinishedSelector:@selector(shortenURLFinished:)
 											 method:@"GET"
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 										  autostart:YES] autorelease];
 }
 
 - (void)shortenURLFinished:(SHKRequest *)aRequest
 {
-<<<<<<< HEAD
-	[SHK hideActivityIndicator];
-=======
 	[[SHKActivityIndicator currentIndicator] hide];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	NSString *result = [[aRequest getResult] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 	
@@ -340,11 +276,6 @@
 		
 		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", item.text ? item.text : item.title, result] forKey:@"status"];
 	}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	[self showTwitterForm];
 }
 
@@ -387,17 +318,10 @@
 - (void)sendStatus
 {
 	OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/statuses/update.json"]
-<<<<<<< HEAD
-																   consumer:consumer
-																	  token:accessToken
-																	  realm:nil
-														  signatureProvider:nil];
-=======
 																	consumer:consumer
 																	   token:accessToken
 																	   realm:nil
 														   signatureProvider:nil];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	[oRequest setHTTPMethod:@"POST"];
 	
@@ -408,17 +332,10 @@
 	[statusParam release];
 	
 	OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
-<<<<<<< HEAD
-						 delegate:self
-				didFinishSelector:@selector(sendStatusTicket:didFinishWithData:)
-				  didFailSelector:@selector(sendStatusTicket:didFailWithError:)];	
-
-=======
 																						  delegate:self
 																				 didFinishSelector:@selector(sendStatusTicket:didFinishWithData:)
 																				   didFailSelector:@selector(sendStatusTicket:didFailWithError:)];	
 	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	[fetcher start];
 	[oRequest release];
 }
@@ -426,11 +343,6 @@
 - (void)sendStatusTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data 
 {	
 	// TODO better error handling here
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	if (ticket.didSucceed) 
 		[self sendDidFinish];
 	
@@ -460,11 +372,7 @@
 		
 		
 		// this is the error message for revoked access
-<<<<<<< HEAD
-		if ([errorMessage isEqualToString:@"Invalid / used nonce"])
-=======
 		if ([errorMessage isEqualToString:@"Invalid / used nonce"] || [errorMessage isEqualToString:@"Could not authenticate with OAuth."])
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		{
 			[self sendDidFailShouldRelogin];
 		}
@@ -501,11 +409,6 @@
 		[oRequest prepare];
 	} else {
 		[oRequest prepare];
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		NSDictionary * headerDict = [oRequest allHTTPHeaderFields];
 		NSString * oauthHeader = [NSString stringWithString:[headerDict valueForKey:@"Authorization"]];
 		
@@ -522,11 +425,6 @@
 		[oRequest setValue:@"https://api.twitter.com/1/account/verify_credentials.json" forHTTPHeaderField:@"X-Auth-Service-Provider"];
 		[oRequest setValue:oauthHeader forHTTPHeaderField:@"X-Verify-Credentials-Authorization"];
 	}
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	CGFloat compression = 0.9f;
 	NSData *imageData = UIImageJPEGRepresentation([item image], compression);
 	
@@ -553,11 +451,6 @@
 	} else {
 		dispKey = @"Content-Disposition: form-data; name=\"media\"; filename=\"upload.jpg\"\r\n";
 	}
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	[body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	[body appendData:[dispKey dataUsingEncoding:NSUTF8StringEncoding]];
@@ -578,17 +471,10 @@
 	
 	// setting the body of the post to the reqeust
 	[oRequest setHTTPBody:body];
-<<<<<<< HEAD
-		
-	// Notify delegate
-	[self sendDidStart];
-		
-=======
 	
 	// Notify delegate
 	[self sendDidStart];
 	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	// Start the request
 	OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
 																						  delegate:self
@@ -646,28 +532,12 @@
 	[oRequest setHTTPMethod:@"POST"];
 	
 	OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
-<<<<<<< HEAD
-						 delegate:nil // Currently not doing any error handling here.  If it fails, it's probably best not to bug the user to follow you again.
-				didFinishSelector:nil
-				  didFailSelector:nil];	
-=======
 																						  delegate:nil // Currently not doing any error handling here.  If it fails, it's probably best not to bug the user to follow you again.
 																				 didFinishSelector:nil
 																				   didFailSelector:nil];	
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	[fetcher start];
 	[oRequest release];
 }
 
-<<<<<<< HEAD
-- (void)sendDidFinish
-{	
-	if (!quiet) {
-        [SHK displayCompleted:SHKLocalizedString(@"Posted to Twitter")];
-    }
-}
-
-=======
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end

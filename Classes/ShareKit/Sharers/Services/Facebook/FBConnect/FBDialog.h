@@ -99,12 +99,9 @@
  */
 - (void)dialogDidSucceed:(NSURL*)url;
 
-<<<<<<< HEAD
-=======
 - (void)bounce2AnimationStopped;
 - (void)keyboardWillShow:(NSNotification*)notification;
 - (void)keyboardWillHide:(NSNotification*)notification;
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

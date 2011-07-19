@@ -59,21 +59,13 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 #pragma mark Authorization
 
 - (NSString *)authorizationFormCaption{
-<<<<<<< HEAD
-	return SHKLocalizedString(@"Set up a free account at %@", @"Tumblr.com");
-=======
 	return SHKLocalizedString(@"Create a free account at %@", @"Tumblr.com");
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (void)authorizationFormValidate:(SHKFormController *)form{
 	// Display an activity indicator
 	if (!quiet)
-<<<<<<< HEAD
-		[SHK displayActivity:SHKLocalizedString(@"Logging In...")];
-=======
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	
 	// Authorize the user through the server
@@ -95,11 +87,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
 }
 
 - (void)authFinished:(SHKRequest *)aRequest{		
-<<<<<<< HEAD
-	[SHK hideActivityIndicator];
-=======
 	[[SHKActivityIndicator currentIndicator] hide];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	if (aRequest.success)
 		[pendingForm saveForm];
 	
@@ -330,11 +318,7 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
             return;
         }
         
-<<<<<<< HEAD
-		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a sending your post to Tumblr.")]];
-=======
 		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was an error sending your post to Tumblr.")]];
->>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		return;
 	}
     
