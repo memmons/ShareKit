@@ -297,5 +297,4 @@ Google Reader API is unoffical, this was hobbled together from:
 		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a problem saving your note.")]]; // TODO better error handling/message	
 }
 
-
 @end

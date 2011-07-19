@@ -21,7 +21,7 @@
 "Actions" = "Aktionen";
 "Services" = "Dienste";
 "Send to %@" = "Zu %@ senden";
-"Copy" = "Kopieren";
+"Copy Link" = "Kopieren Link";
 "Copied!" = "Kopiert!";
 "Saving to %@" = "Nach %@ speichern";
 "Saved!" = "Gespeichert!";
@@ -97,3 +97,15 @@
 "Sharing Text" = "Teile Text";
 "Sharing a File" = "Teile Datei";
 "Logout of All Services" = "Aus allen Services ausloggen";
+
+"No Internet Connection" = "Keine Internetverbindung";
+"ShareInternetRequired"		= "Eine Internetverbindung ist für die Freigabe auf %@ erforderlich."; 
+
+"Posted to Twitter" = "Geschrieben auf Twitter";
+"Posted to Facebook" = "Geschrieben auf Facebook";
+"Sent to Delicious" = "Geschrieben auf Delicious";
+"Sent to Pinboard" = "Geschrieben auf Pinboard";
+"Sent to Google Reader" = "Geschrieben auf Google Reader";
+"Sent to Instapaper" = "Geschrieben auf Instapaper";
+"Sent to Read it Later" = "Geschrieben auf Read it Later";
+"Sent to Tumblr" = "Geschrieben auf Tumblr";

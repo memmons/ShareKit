@@ -209,5 +209,13 @@
 	}
 }
 
+- (void)sendDidFinish
+{
+	if (!quiet) {
+    	[SHK displayCompleted:SHKLocalizedString(@"E-mail Sent")];
+    }
+    [super sendDidFinish];
+}
+
 
 @end

@@ -31,6 +31,8 @@
 #import "SHKCustomShareMenu.h"
 #import <Foundation/NSObjCRuntime.h>
 
+static BOOL hasMoreButton = NO;
+
 @implementation SHKActionSheet
 
 @synthesize item, sharers;
@@ -44,7 +46,12 @@
 
 + (SHKActionSheet *)actionSheetForType:(SHKShareType)type
 {
-	SHKActionSheet *as = [[SHKActionSheet alloc] initWithTitle:SHKLocalizedString(@"Share")
+    return [self actionSheetForType:type withSharers:nil];
+}
+
++ (SHKActionSheet *)actionSheetForType:(SHKShareType)type withSharers:(NSArray *)sharers
+{
+	SHKActionSheet *as = [[SHKActionSheet alloc] initWithTitle:nil
 													  delegate:self
 											 cancelButtonTitle:nil
 										destructiveButtonTitle:nil
@@ -53,11 +60,13 @@
 	as.item.shareType = type;
 	
 	as.sharers = [NSMutableArray arrayWithCapacity:0];
-	NSArray *favoriteSharers = [SHK favoriteSharersForType:type];
+	if (!sharers) {
+	    sharers = [SHK favoriteSharersForType:type];
+	}
 		
 	// Add buttons for each favorite sharer
 	id class;
-	for(NSString *sharerId in favoriteSharers)
+	for(NSString *sharerId in sharers)
 	{
 		class = NSClassFromString(sharerId);
 		if ([class canShare])
@@ -67,8 +76,19 @@
 		}
 	}
 	
-	// Add More button
-	[as addButtonWithTitle:SHKLocalizedString(@"More...")];
+    int total_sharers = 0;
+    for (NSString *key in [SHK sharersDictionary]) {
+        total_sharers += [[[SHK sharersDictionary] objectForKey:key] count];
+    }
+
+    if (total_sharers > [sharers count] && !sharers) {
+        hasMoreButton = YES;
+	    // Add More button
+	    [as addButtonWithTitle:SHKLocalizedString(@"More...")];
+    }
+    else {
+        hasMoreButton = NO;
+    }
 	
 	// Add Cancel button
 	[as addButtonWithTitle:SHKLocalizedString(@"Cancel")];
@@ -84,6 +104,14 @@
 	return as;
 }
 
++ (SHKActionSheet *)actionSheetForItem:(SHKItem *)i withSharers:(NSArray *)sharers 
+{
+	SHKActionSheet *as = [self actionSheetForType:i.shareType withSharers:sharers];
+	as.item = i;
+	return as;
+}
+
+
 - (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated
 {
 	// Sharers
@@ -93,7 +121,7 @@
 	}
 	
 	// More
-	else if (buttonIndex == sharers.count)
+	else if (buttonIndex == sharers.count && hasMoreButton)
 	{
 		SHKShareMenu *shareMenu = [[SHKCustomShareMenu alloc] initWithStyle:UITableViewStyleGrouped];
 		shareMenu.item = item;
