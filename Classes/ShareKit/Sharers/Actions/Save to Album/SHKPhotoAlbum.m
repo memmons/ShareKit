@@ -35,7 +35,11 @@
 
 + (NSString *)sharerTitle
 {
+<<<<<<< HEAD
 	return @"Save to Photo Album";
+=======
+	return SHKLocalizedString(@"Save to Photo Album");
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 + (BOOL)canShareImage
@@ -72,7 +76,15 @@
 		UIImageWriteToSavedPhotosAlbum(item.image, nil, nil, nil);
 	
 	// Notify user
+<<<<<<< HEAD
 	[SHK displayCompleted:SHKLocalizedString(@"Saved")];
+=======
+	[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Copied!")];
+	
+	// Notify delegate, but quietly
+	self.quiet = YES;
+	[self sendDidFinish];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	return YES;
 }

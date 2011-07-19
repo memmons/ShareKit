@@ -76,7 +76,11 @@
 
 - (void)tokenRequest
 {
+<<<<<<< HEAD
 	[SHK displayActivity:SHKLocalizedString(@"Connecting...")];
+=======
+	[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Connecting...")];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
     OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:requestURL
                                                                    consumer:consumer
@@ -107,7 +111,11 @@
 	if (SHKDebugShowLogs) // check so we don't have to alloc the string with the data if we aren't logging
 		SHKLog(@"tokenRequestTicket Response Body: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
 	
+<<<<<<< HEAD
 	[SHK hideActivityIndicator];
+=======
+	[[SHKActivityIndicator currentIndicator] hide];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	if (ticket.didSucceed) 
 	{
@@ -126,7 +134,11 @@
 
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
 {
+<<<<<<< HEAD
 	[SHK hideActivityIndicator];
+=======
+	[[SHKActivityIndicator currentIndicator] hide];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Request Error")
 								 message:error!=nil?[error localizedDescription]:SHKLocalizedString(@"There was an error while sharing")
@@ -184,7 +196,11 @@
 - (void)tokenAccess:(BOOL)refresh
 {
 	if (!refresh)
+<<<<<<< HEAD
 		[SHK displayActivity:SHKLocalizedString(@"Authenticating...")];
+=======
+		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Authenticating...")];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
     OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:accessURL
                                                                    consumer:consumer
@@ -214,7 +230,11 @@
 	if (SHKDebugShowLogs) // check so we don't have to alloc the string with the data if we aren't logging
 		SHKLog(@"tokenAccessTicket Response Body: %@", [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
 	
+<<<<<<< HEAD
 	[SHK hideActivityIndicator];
+=======
+	[[SHKActivityIndicator currentIndicator] hide];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	if (ticket.didSucceed) 
 	{
@@ -236,7 +256,11 @@
 
 - (void)tokenAccessTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
 {
+<<<<<<< HEAD
 	[SHK hideActivityIndicator];
+=======
+	[[SHKActivityIndicator currentIndicator] hide];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Access Error")
 								 message:error!=nil?[error localizedDescription]:SHKLocalizedString(@"There was an error while sharing")

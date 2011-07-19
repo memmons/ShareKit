@@ -87,7 +87,11 @@ Google Reader API is unoffical, this was hobbled together from:
 {
 	// Display an activity indicator
 	if (!quiet)
+<<<<<<< HEAD
 		[SHK displayActivity:SHKLocalizedString(@"Logging In...")];
+=======
+		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	
 	// Authorize the user through the server
@@ -122,7 +126,11 @@ Google Reader API is unoffical, this was hobbled together from:
 	
 	// Hide the activity indicator
 	if (!sendAfterLogin)
+<<<<<<< HEAD
 		[SHK hideActivityIndicator];
+=======
+		[[SHKActivityIndicator currentIndicator] hide];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	// Parse Result
 	self.session = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -297,4 +305,8 @@ Google Reader API is unoffical, this was hobbled together from:
 		[self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a problem saving your note.")]]; // TODO better error handling/message	
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end

@@ -29,6 +29,7 @@
 #import "SHK.h"
 #import "SHKTwitter.h"
 
+<<<<<<< HEAD
 static CGFloat UsernameFontSize = 18;
 static CGFloat CounterMarginRight = 115;
 static CGFloat LogoutButtonWidth = 66;
@@ -38,11 +39,16 @@ static CGFloat LogoutButtonWidth = 66;
 - (CGRect)toolbarFrame;
 - (void)updateCounter;
 @end
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 @implementation SHKTwitterForm
 
 @synthesize delegate;
+<<<<<<< HEAD
 @synthesize username;
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @synthesize textView;
 @synthesize counter;
 @synthesize hasAttachment;
@@ -51,7 +57,10 @@ static CGFloat LogoutButtonWidth = 66;
 {
 	[delegate release];
 	[textView release];
+<<<<<<< HEAD
 	[toolbar release];
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	[counter release];
     [super dealloc];
 }
@@ -64,7 +73,11 @@ static CGFloat LogoutButtonWidth = 66;
 																							  target:self
 																							  action:@selector(cancel)];
 		
+<<<<<<< HEAD
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Send to Twitter"
+=======
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:SHKLocalizedString(@"Send to Twitter")
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 																				  style:UIBarButtonItemStyleDone
 																				 target:self
 																				 action:@selector(save)];
@@ -88,9 +101,13 @@ static CGFloat LogoutButtonWidth = 66;
 	textView.autoresizesSubviews = YES;
 	textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
+<<<<<<< HEAD
 	
 	[self.view addSubview:textView];
     [self setupToolbar];
+=======
+	[self.view addSubview:textView];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -120,6 +137,7 @@ static CGFloat LogoutButtonWidth = 66;
     return YES;
 }
 
+<<<<<<< HEAD
 - (void)setupToolbar {
     [toolbar removeFromSuperview];
     [toolbar release];
@@ -175,6 +193,33 @@ static CGFloat LogoutButtonWidth = 66;
     	}
 	}
 	 	
+=======
+//#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+- (void)keyboardWillShow:(NSNotification *)notification
+{	
+	CGRect keyboardFrame;
+	CGFloat keyboardHeight;
+	
+	// 3.2 and above
+	/*if (UIKeyboardFrameEndUserInfoKey)
+	 {		
+	 [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];		
+	 if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait || [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortraitUpsideDown) 
+	 keyboardHeight = keyboardFrame.size.height;
+	 else
+	 keyboardHeight = keyboardFrame.size.width;
+	 }
+	 
+	 // < 3.2
+	 else 
+	 {*/
+
+	[[notification.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue:&keyboardFrame];
+	keyboardHeight = keyboardFrame.size.height;
+	//}
+	
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	// Find the bottom of the screen (accounting for keyboard overlay)
 	// This is pretty much only for pagesheet's on the iPad
 	UIInterfaceOrientation orient = [[UIApplication sharedApplication] statusBarOrientation];
@@ -190,7 +235,13 @@ static CGFloat LogoutButtonWidth = 66;
 	CGFloat maxViewHeight = self.view.bounds.size.height - keyboardHeight + distFromBottom;
 	
 	textView.frame = CGRectMake(0,0,self.view.bounds.size.width,maxViewHeight);
+<<<<<<< HEAD
 }
+=======
+	[self layoutCounter];
+}
+//#pragma GCC diagnostic pop  
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 #pragma mark -
 
@@ -207,13 +258,31 @@ static CGFloat LogoutButtonWidth = 66;
 		counter.autoresizesSubviews = YES;
 		counter.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
 		
+<<<<<<< HEAD
+=======
+		[self.view addSubview:counter];
+		[self layoutCounter];
+		
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		[counter release];
 	}
 	
 	int count = (hasAttachment?115:140) - textView.text.length;
 	counter.text = [NSString stringWithFormat:@"%@%i", hasAttachment ? @"Image + ":@"" , count];
+<<<<<<< HEAD
     counter.textColor = [UIColor grayColor];
     [counter sizeToFit];
+=======
+	counter.textColor = count >= 0 ? [UIColor blackColor] : [UIColor redColor];
+}
+
+- (void)layoutCounter
+{
+	counter.frame = CGRectMake(textView.bounds.size.width-150-15,
+							   textView.bounds.size.height-15-9,
+							   150,
+							   15);
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -236,11 +305,15 @@ static CGFloat LogoutButtonWidth = 66;
 - (void)cancel
 {	
 	[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
+<<<<<<< HEAD
 }
 
 - (void)logout {
     [SHKTwitter logout];
     [(SHKTwitter *)delegate promptAuthorization];
+=======
+	[(SHKTwitter *)delegate sendDidCancel];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (void)save
@@ -270,6 +343,7 @@ static CGFloat LogoutButtonWidth = 66;
 	[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
 }
 
+<<<<<<< HEAD
 #pragma mark -
 #pragma mark Rotation
 
@@ -278,4 +352,6 @@ static CGFloat LogoutButtonWidth = 66;
     [self setupToolbar];
 }
 
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end

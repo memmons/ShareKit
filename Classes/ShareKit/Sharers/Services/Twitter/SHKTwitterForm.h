@@ -31,17 +31,32 @@
 @interface SHKTwitterForm : UIViewController <UITextViewDelegate>
 {
 	id delegate;
+<<<<<<< HEAD
     NSString *username;
 	UITextView *textView;
 	UILabel *counter;
     UIToolbar *toolbar;
+=======
+	UITextView *textView;
+	UILabel *counter;
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	BOOL hasAttachment;
 }
 
 @property (nonatomic, retain) id delegate;
+<<<<<<< HEAD
 @property (nonatomic, retain) NSString *username;
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @property (nonatomic, retain) UITextView *textView;
 @property (nonatomic, retain) UILabel *counter;
 @property BOOL hasAttachment;
 
+<<<<<<< HEAD
+=======
+- (void)layoutCounter;
+- (void)save;
+- (void)keyboardWillShow:(NSNotification *)notification;
+
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @end

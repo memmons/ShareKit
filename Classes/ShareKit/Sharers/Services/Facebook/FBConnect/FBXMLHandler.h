@@ -16,7 +16,11 @@
 
 #import "FBConnectGlobal.h"
 
+<<<<<<< HEAD
 @interface FBXMLHandler : NSObject {
+=======
+@interface FBXMLHandler : NSObject <NSXMLParserDelegate> {
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
   NSMutableArray* _stack;
   NSMutableArray* _nameStack;
   id _rootObject;

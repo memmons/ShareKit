@@ -58,7 +58,11 @@
 {
 	// Display an activity indicator	
 	if (!quiet)
+<<<<<<< HEAD
 		[SHK displayActivity:SHKLocalizedString(@"Logging In...")];
+=======
+		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	
 	// Authorize the user through the server
@@ -94,7 +98,11 @@
 - (void)authFinished:(SHKRequest *)aRequest
 {	
 	// Hide the activity indicator
+<<<<<<< HEAD
 	[SHK hideActivityIndicator];
+=======
+	[[SHKActivityIndicator currentIndicator] hide];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	if ([self handleResponse:aRequest])
 	{

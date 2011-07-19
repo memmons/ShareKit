@@ -1,5 +1,17 @@
+<<<<<<< HEAD
 .DS_Storedesign/*.pngdesign/*.png*preview/*.pngpreview/*.png*frontend/*.tmproj# Sparkledsa_priv.pem# Xcode Config*.mode1*.mode1v3*.mode2v3*.perspective*.perspectivev3*.pbxuser*.xcuserdatad*.xcworkspacedata.LSOverride# Generated filesVersionX-revision.h# Buildsbuild/Build/*.[oa]# Other SCMs.hg.svnCVS# Backups*~.nib*.swp*~*(Autosaved).rtfd/Backup[ ]of[ ]*.pages/Backup[ ]of[ ]*.key/Backup[ ]of[ ]*.numbers/*.timemachine.supportedArchives/*droplet.appArchives/*.ipaDesign/*.png
 ShareKit.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 ShareKit.xcodeproj/project.xcworkspace/xcuserdata/mgemmons.xcuserdatad/UserInterfaceState.xcuserstate
 ShareKit.xcodeproj/xcuserdata/mgemmons.xcuserdatad/xcschemes/ShareKit.xcscheme
 ShareKit.xcodeproj/xcuserdata/mgemmons.xcuserdatad/xcschemes/xcschememanagement.plist
+=======
+.DS_Store
+*~
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+build
+.DS_Store
+Classes/ShareKit/SHKConfig.h
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a

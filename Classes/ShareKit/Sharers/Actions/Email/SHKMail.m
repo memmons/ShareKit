@@ -31,11 +31,20 @@
 @implementation MFMailComposeViewController (SHK)
 
 - (void)SHKviewDidDisappear:(BOOL)animated
+<<<<<<< HEAD
 {
 	[super viewDidDisappear:animated];
 	
 	// Remove the SHK view wrapper from the window
 	[[SHK currentHelper] viewWasDismissed];
+=======
+{	
+	[super viewDidDisappear:animated];
+	
+	// Remove the SHK view wrapper from the window (but only if the view doesn't have another modal over it)
+	if (self.modalViewController == nil)
+		[[SHK currentHelper] viewWasDismissed];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 @end
@@ -49,7 +58,11 @@
 
 + (NSString *)sharerTitle
 {
+<<<<<<< HEAD
 	return @"Email";
+=======
+	return SHKLocalizedString(@"Email");
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 + (BOOL)canShareText
@@ -88,7 +101,11 @@
 
 + (BOOL)canShare
 {
+<<<<<<< HEAD
 	return YES;
+=======
+	return [MFMailComposeViewController canSendMail];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 }
 
 - (BOOL)shouldAutoShare
@@ -101,6 +118,7 @@
 #pragma mark -
 #pragma mark Share API Methods
 
+<<<<<<< HEAD
 - (void)share
 {
     if (![MFMailComposeViewController canSendMail]) {
@@ -115,6 +133,8 @@
     }
 }
 
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 - (BOOL)send
 {
 	self.quiet = YES;
@@ -128,10 +148,22 @@
 - (BOOL)sendMail
 {	
 	MFMailComposeViewController *mailController = [[[MFMailComposeViewController alloc] init] autorelease];
+<<<<<<< HEAD
 	mailController.mailComposeDelegate = self;
 	
 	NSString *body = [item customValueForKey:@"body"];
 	NSString *subject = [item customValueForKey:@"subject"];
+=======
+	if (!mailController) {
+		// e.g. no mail account registered (will show alert)
+		[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
+		return YES;
+	}
+	
+	mailController.mailComposeDelegate = self;
+	
+	NSString *body = [item customValueForKey:@"body"];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	
 	if (body == nil)
 	{
@@ -158,6 +190,7 @@
 			
 			else
 				body = attachedStr;
+<<<<<<< HEAD
 			
 			[mailController addAttachmentData:item.data mimeType:item.mimeType fileName:item.filename];
 		}
@@ -165,6 +198,10 @@
 		if (item.image)
 			[mailController addAttachmentData:UIImageJPEGRepresentation(item.image, 1) mimeType:@"image/jpeg" fileName:@"Image.jpg"];		
 		
+=======
+		}
+		
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		// fallback
 		if (body == nil)
 			body = @"";
@@ -180,7 +217,17 @@
 		[item setCustomValue:body forKey:@"body"];
 	}
 	
+<<<<<<< HEAD
 	[mailController setSubject:(subject != nil ? subject : item.title)];
+=======
+	if (item.data)		
+		[mailController addAttachmentData:item.data mimeType:item.mimeType fileName:item.filename];
+	
+	if (item.image)
+		[mailController addAttachmentData:UIImageJPEGRepresentation(item.image, 1) mimeType:@"image/jpeg" fileName:@"Image.jpg"];
+	
+	[mailController setSubject:item.title];
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 	[mailController setMessageBody:body isHTML:YES];
 			
 	[[SHK currentHelper] showViewController:mailController];
@@ -209,6 +256,7 @@
 	}
 }
 
+<<<<<<< HEAD
 - (void)sendDidFinish
 {
 	if (!quiet) {
@@ -217,5 +265,7 @@
     [super sendDidFinish];
 }
 
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 @end

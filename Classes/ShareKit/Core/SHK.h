@@ -32,9 +32,17 @@
 #import "SHKItem.h"
 #import "SHKActionSheet.h"
 #import "SHKRequest.h"
+<<<<<<< HEAD
 #import "SHKFormFieldSettings.h"
 #import "UIWebView+SHK.h"
 
+=======
+#import "SHKActivityIndicator.h"
+#import "SHKFormFieldSettings.h"
+#import "UIWebView+SHK.h"
+
+
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 @class SHKActionSheet;
 @class SHKViewControllerWrapper;
 
@@ -110,6 +118,7 @@
 + (void)flushOfflineQueue;
 
 #pragma mark -
+<<<<<<< HEAD
 #pragma mark HUD Activity Messaging
 
 + (void)displayCompleted:(NSString *)labelText;
@@ -117,6 +126,8 @@
 + (void)hideActivityIndicator;
 
 #pragma mark -
+=======
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 
 + (NSError *)error:(NSString *)description, ...;
 

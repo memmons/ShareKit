@@ -8,9 +8,17 @@
 		<string>SHKCopy</string>
 		<string>SHKMail</string>
 		<string>SHKSafari</string>
+<<<<<<< HEAD
 	</array>
 	<key>services</key>
 	<array>
+=======
+		<string>SHKTextMessage</string>
+	</array>
+	<key>services</key>
+	<array>
+		<string>SHKEvernote</string>
+>>>>>>> 9139332ef1ab10128697487185c106d81215df6a
 		<string>SHKTwitter</string>
 		<string>SHKPinboard</string>
 		<string>SHKDelicious</string>
