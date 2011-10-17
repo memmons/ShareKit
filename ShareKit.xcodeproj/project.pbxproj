@@ -87,6 +87,7 @@
 		43D1DEF011D5CDD200550D75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */; };
 		43EF406E11D3FFF800B1F700 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EF406D11D3FFF800B1F700 /* Security.framework */; };
 		D58AC87813D501CB00F5BB1A /* ShareKit.strings in Resources */ = {isa = PBXBuildFile; fileRef = D58AC87413D501CB00F5BB1A /* ShareKit.strings */; };
+		D5996F06144CF352007A5392 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D5996F05144CF352007A5392 /* MBProgressHUD.m */; };
 		D85D6B3112E37D8300FD0426 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D85D6B3012E37D8300FD0426 /* ShareKit.bundle */; };
 		D85D6BFE12E37EDC00FD0426 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D85D6BBC12E37EDC00FD0426 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
@@ -246,6 +247,8 @@
 		D58AC87513D501CB00F5BB1A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/ShareKit.strings; sourceTree = "<group>"; };
 		D58AC87613D501CB00F5BB1A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareKit.strings; sourceTree = "<group>"; };
 		D58AC87713D501CB00F5BB1A /* no */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = no; path = no.lproj/ShareKit.strings; sourceTree = "<group>"; };
+		D5996F04144CF352007A5392 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = External/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		D5996F05144CF352007A5392 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = External/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		D85D6B3012E37D8300FD0426 /* ShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareKit.bundle; sourceTree = "<group>"; };
 		D85D6BBB12E37EDC00FD0426 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D85D6BBC12E37EDC00FD0426 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -293,7 +296,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				43C91D1B11EB963600F31FAE /* Resources-iPad */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				29B97323FDCFA39411CA2CEA /* Frameworks & Externals */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CustomTemplate;
@@ -321,9 +324,10 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+		29B97323FDCFA39411CA2CEA /* Frameworks & Externals */ = {
 			isa = PBXGroup;
 			children = (
+				D5996F03144CF33D007A5392 /* MBProgressHUD */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
@@ -331,7 +335,7 @@
 				43EF406D11D3FFF800B1F700 /* Security.framework */,
 				43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */,
 			);
-			name = Frameworks;
+			name = "Frameworks & Externals";
 			sourceTree = "<group>";
 		};
 		43150A8A11E78697008C6B68 /* Instapaper */ = {
@@ -733,6 +737,15 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		D5996F03144CF33D007A5392 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D5996F04144CF352007A5392 /* MBProgressHUD.h */,
+				D5996F05144CF352007A5392 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		D85D6B5512E37EDC00FD0426 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +901,7 @@
 				43B934B511FE682600C9D3F3 /* SHKFBStreamDialog.m in Sources */,
 				432B147C11FF4B0700291B37 /* SHKPhotoAlbum.m in Sources */,
 				D85D6BFE12E37EDC00FD0426 /* MBProgressHUD.m in Sources */,
+				D5996F06144CF352007A5392 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
