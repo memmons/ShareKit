@@ -25,15 +25,14 @@
 //
 //
 
-#import <objc/runtime.h>
-#import <MessageUI/MessageUI.h>
-
 #import "SHK.h"
 #import "SHKViewControllerWrapper.h"
 #import "SHKActionSheet.h"
 #import "SHKOfflineSharer.h"
 #import "SFHFKeychainUtils.h"
 #import "Reachability.h"
+#import </usr/include/objc/objc-class.h>
+#import <MessageUI/MessageUI.h>
 #import "MBProgressHUD.h"
 
 static MBProgressHUD *HUD = nil;
