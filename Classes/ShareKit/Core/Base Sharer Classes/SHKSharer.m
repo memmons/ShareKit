@@ -126,6 +126,9 @@
 		case SHKShareTypeFile:
 			return [self canShareFile];
 			break;
+        case SHKShareTypeUndefined:
+            return NO;
+            break;
 	}
 	return NO;
 }
@@ -576,6 +579,9 @@
 		case SHKShareTypeFile:
 			return (item.data != nil);
 			break;
+        case SHKShareTypeUndefined:
+            return NO;
+            break;
 	}
 	
 	return NO;
@@ -662,6 +668,10 @@
 		case SHKPendingShare:
 			[self share];
 			break;
+
+        default:
+            NSAssert(NO, @"Pending action is unhandled");
+            break;
 	}
 }
 
